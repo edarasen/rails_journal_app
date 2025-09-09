@@ -13,4 +13,14 @@ class CategoryTest < ActiveSupport::TestCase
     assert category.valid?, "Category should belong to a user"
     assert_equal user, category.user
   end
+
+  test "fixtures saved to database" do
+    assert_not_nil categories(:one), "Category :one did not save to database"
+  end
+  
+  test "has many tasks" do
+    category = categories(:one)
+    category.tasks.create!(name:"high", details:"asdf", due_date:'2025-09-10', category: category)
+    assert_equal 1, category.tasks.count
+  end
 end
