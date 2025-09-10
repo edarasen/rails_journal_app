@@ -1,0 +1,24 @@
+<% if @categories.any? %>
+  <table>
+    <thead>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Details</th>
+      <th>Task Count</th>
+      <th>Color</th>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.id %></td>
+          <td><%= category.name %></td>
+          <td style="color: <%=category.color%>;"><%= category.details %></td>
+          <td><%= category.tasks.count %></td>
+          <td><%= category.color %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h3>No categories to display</h3>
+<% end %>

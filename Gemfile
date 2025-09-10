@@ -70,10 +70,10 @@ gem "tailwindcss-rails", "~> 4.3"
 
 gem "watchman-rails"
 
-gem "devise" 
+gem "devise"
 
-gem "devise-jwt" 
+gem "devise-jwt"
 
 gem "dotenv-rails"
 
-gem "rails-controller-testing" 
+gem "rails-controller-testing"

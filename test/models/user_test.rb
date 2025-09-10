@@ -2,12 +2,12 @@ require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
   test "user should have non-null email" do
-    user = User.new(email:"", encrypted_password:"asdf")
+    user = User.new(email: "", encrypted_password: "asdf")
     assert !user.valid?, "User should have non-null email"
   end
 
   test "user should have non-null password" do
-    user = User.new(email:"asdf", encrypted_password:"")
+    user = User.new(email: "asdf", encrypted_password: "")
     assert !user.valid?, "User should have non-null password"
   end
 
@@ -18,7 +18,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "has many categories" do
     user = users(:one)
-    user.categories.create!(name:"high", user: user)
+    user.categories.create!(name: "high", user: user)
     assert_equal 1, user.categories.count
   end
 end
