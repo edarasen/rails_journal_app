@@ -79,6 +79,12 @@ jobs:
       - name: Install packages
         run: sudo apt-get update && sudo apt-get install --no-install-recommends -y build-essential git libpq-dev libyaml-dev node-gyp pkg-config python-is-python3 google-chrome-stable
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: yarn
+
       - name: Install JS deps
         run: yarn install --frozen-lockfile
 
@@ -87,7 +93,7 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
-          
+      
       - name: Precompile assets
         run: bundle exec rails assets:precompile
 
