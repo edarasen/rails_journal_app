@@ -11,12 +11,27 @@ class CategoriesController < ApplicationController
     @tasks = @category.tasks
   end
 
-  # =====
+  def new
+    @category = Category.new
+  end
 
-  # def show
-  #   @author = Author.find(params[:id])
-  #   @articles = @author.articles
-  # end
+  def create
+    @user = current_user
+    @category = @user.categories.create(category_params)
+
+    if @category.save
+      redirect_to categories_path
+    else
+      render :new
+    end
+  end
+
+  private
+  def category_params
+    params.require(:category).permit(:name, :details, :color)
+  end
+
+  # =====
 
   # def new
   #   @author = Author.new

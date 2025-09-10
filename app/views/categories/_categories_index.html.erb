@@ -15,6 +15,7 @@
           <td style="color: <%=category.color%>;"><%= category.details %></td>
           <td><%= category.tasks.count %></td>
           <td><%= category.color %></td>
+          <td><%= button_to 'Show', category_path(category.id), :method => "get"%></td>
         </tr>
       <% end %>
     </tbody>
