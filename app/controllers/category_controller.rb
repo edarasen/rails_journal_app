@@ -1,4 +1,5 @@
 class CategoryController < ApplicationController
+  # helper_method :current_category, :category_selected?
   before_action :authenticate_user!
 
   def update
@@ -15,4 +16,12 @@ class CategoryController < ApplicationController
   def category_params
     params.require(:category).permit(:name, :details, :color)
   end
+
+  # def current_category
+  #   @current_category ||= Category.find_by(id: category_id)
+  # end
+  # def category_selected?
+  #   current_category != nil
+  # end
+
 end

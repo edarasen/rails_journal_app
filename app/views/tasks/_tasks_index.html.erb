@@ -1,0 +1,28 @@
+<%= render 'tasks/new', category: category %>
+
+<% if @tasks.any? %>
+  <table>
+    <thead>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Details</th>
+      <th>Due Date</th>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+      <% break if task.id == nil%>
+        <tr>
+          <td><%= task.id %></td>
+          <td><%= task.name %></td>
+          <td><%= task.details %></td>
+          <td><%= task.due_date %></td>
+          <td><%= button_to 'Show', category_task_path(category, task), :method => "get"%></td>
+          <%# <td><%= button_to 'Edit', edit_category_path(category.id), :method => "get"%</td> %>
+          <td><%= button_to 'Delete', category_task_path(category, task), :method => "delete"%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h3>No tasks to display</h3>
+<% end %>

@@ -18,4 +18,7 @@
   </tbody>
 </table>
 
+<h1>Tasks</h1>
+<%= render 'tasks/tasks_index', category: @category %>
+
 <%= button_to 'Back to Home', categories_path, :method => "get"%>

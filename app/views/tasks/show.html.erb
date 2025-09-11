@@ -1,0 +1,19 @@
+<%= render 'shared/dashboard' %>
+<table>
+  <thead>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Details</th>
+    <th>Due Date</th>
+  </thead>
+  <tbody>
+      <tr>
+        <td><%= @task.id %></td>
+        <td><%= @task.name %></td>
+        <td><%= @task.details %></td>
+        <td><%= @task.due_date %></td>
+      </tr>
+  </tbody>
+</table>
+
+<%= button_to 'Back', category_path(@category), :method => "get"%>
