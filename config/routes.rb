@@ -24,6 +24,6 @@ Rails.application.routes.draw do
   post '/categories/' => 'category#create', as: 'create_category'
   post '/categories/:id' => 'category#update', as: 'update_category'
 
-  post '/categories/:category_id/' => 'tasks#create', as: 'create_category_task'
+  post '/categories/:category_id/tasks' => 'tasks#create', as: 'create_category_task'
   post '/categories/:category_id/tasks/:id' => 'tasks#update', as: 'update_category_task'
 end
