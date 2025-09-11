@@ -7,6 +7,18 @@ class CategoryTest < ActiveSupport::TestCase
     assert !category.valid?, "Category should have non-null name"
   end
 
+  test "color needs to start with #" do
+    user = users(:one)
+    category = Category.new(name: "asdf", color: "FFC300", user_id: user.id)
+    assert !category.valid?, "Category color should start with #"
+  end
+
+  test "color needs to have exactly 7 characters" do
+    user = users(:one)
+    category = Category.new(name: "asdf", color: "#FFC3000", user_id: user.id)
+    assert !category.valid?, "Category color should have exactly 7 characters"
+  end
+
   test "belongs to a user" do
     user = users(:one)
     category = Category.new(name: "high", user: user)
