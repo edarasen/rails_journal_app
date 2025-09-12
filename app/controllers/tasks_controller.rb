@@ -22,7 +22,7 @@ class TasksController < ApplicationController
     @task = @category.tasks.find(params[:id])
     render :edit
   end
-  
+
   def update
     @category = Category.find(params[:category_id])
     @task = @category.tasks.find(params[:id])
@@ -44,5 +44,4 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:name, :details, :due_date)
   end
-
 end

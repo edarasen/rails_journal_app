@@ -23,5 +23,4 @@ class CategoryController < ApplicationController
   # def category_selected?
   #   current_category != nil
   # end
-
 end
