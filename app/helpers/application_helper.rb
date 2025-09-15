@@ -26,7 +26,7 @@ module ApplicationHelper
   def primary_button
     "px-[0.5rem] py-[0.25rem] cursor-pointer hover:bg-[#9DFBC3] underline"
   end
- 
+
   def secondary_button
     "px-[0.5rem] py-[0.25rem] cursor-pointer hover:bg-[#BEF0EF] underline"
   end

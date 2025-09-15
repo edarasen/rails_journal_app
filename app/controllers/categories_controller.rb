@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
-  rescue_from ActiveRecord::RecordNotFound, with: :not_found 
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
   def index
     @user = current_user
