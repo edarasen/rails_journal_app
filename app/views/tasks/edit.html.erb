@@ -1,22 +1,24 @@
-<%= form_with model: [@category, @task], url: update_category_task_path, local: true do |f| %>
+<div class="<%= flex_col_container %>">
+<%= form_with model: [@category, @task], html: {class: "#{category_container}" }, url: update_category_task_path, local: true do |f| %>
   <p>
-    <%= f.label :name%>
-    <%= f.text_field :name%>
+    <%= f.label :name %> <br/>
+    <%= f.text_field :name, :class => form_field %>
   </p>
 
   <p>
-    <%= f.label :details %>
-    <%= f.textarea :details %>
+    <%= f.label :details %> <br/>
+    <%= f.textarea :details, :class => form_field %>
   </p>
 
   <p>
-    <%= f.label :due_date %>
-    <%= f.date_field :due_date %>
+    <%= f.label :due_date %> <br/>
+    <%= f.date_field :due_date, :class => form_field %>
   </p>
 
   <p>
-    <%= f.submit %> 
+    <%= f.submit 'Edit Task', :class => primary_button %> 
   </p>
 <% end %>
 
-<%= button_to 'Back', category_path(@category), :method => "get"%>
+<%= button_to 'Back', category_path(@category), :method => "get", :class => secondary_button %>
+</div>

@@ -1,20 +1,21 @@
-<%= form_with model: [category, category.tasks.build], local: true do |f| %>
+<h3 class="<%= sub_header %>">New Task</h3>
+<%= form_with model: [category, category.tasks.build], html: {class: "#{category_container}" }, local: true do |f| %>
   <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.label :name %> <br/>
+    <%= f.text_field :name, :class => form_field %>
   </p>
 
   <p>
-    <%= f.label :details %>
-    <%= f.textarea :details %>
+    <%= f.label :details %> <br/>
+    <%= f.textarea :details, :class => form_field %>
   </p>
 
   <p>
-    <%= f.label :due_date %>
-    <%= f.date_field :due_date %>
+    <%= f.label :due_date %> <br/>
+    <%= f.date_field :due_date, :class => form_field %>
   </p>
 
   <p>
-    <%= f.submit %> 
+    <%= f.submit 'Create Task', :class => primary_button %> 
   </p>
 <% end %>

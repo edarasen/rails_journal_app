@@ -1,27 +1,17 @@
 <% if @categories.any? %>
-  <table>
-    <thead>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Details</th>
-      <th>Task Count</th>
-      <th>Color</th>
-    </thead>
-    <tbody>
-      <% @categories.each do |category| %>
-        <tr>
-          <td><%= category.id %></td>
-          <td><%= category.name %></td>
-          <td style="color: <%=category.color%>;"><%= category.details %></td>
-          <td><%= category.tasks.count %></td>
-          <td><%= category.color %></td>
-          <td><%= button_to 'Show', category_path(category.id), :method => "get"%></td>
-          <td><%= button_to 'Edit', edit_category_path(category.id), :method => "get"%></td>
-          <td><%= button_to 'Delete', category_path(category.id), :method => "delete"%></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <h3 class="<%=sub_header%>">Categories</h3>
+  <% @categories.each do |category| %>
+    <div class="<%= category_container %>">
+      <p class="<%= emphasis %>" style="background-color: <%=category.color%>5A;"><%= category.name %></p>
+      <p><%= category.details %></p>
+      <p>Task Count : < <%= category.tasks.count %> ></p>
+      <div class="<%= button_container %>">
+        <%= button_to 'Show', category_path(category.id), :method => "get", :class => primary_button%>
+        <%= button_to 'Edit', edit_category_path(category.id), :method => "get", :class => secondary_button%>
+        <%= button_to 'Delete', category_path(category.id), :method => "delete", :class => delete_button%>
+      </div>
+    </div>
+  <% end %>
 <% else %>
-  <h3>No categories to display</h3>
+  <h3 class="<%=sub_header%>">No categories to display</h3>
 <% end %>

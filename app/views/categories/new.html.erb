@@ -1,20 +1,24 @@
-<%= form_with scope: :category, url: create_category_path, local: true do |f| %>
+<div class="<%= flex_col_container %>">
+<%= form_with scope: :category, html: {class: "#{category_container}" }, url: create_category_path, local: true do |f| %>
   <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.label :name %> <br/>
+    <%= f.text_field :name, :class => form_field %>
   </p>
 
   <p>
-    <%= f.label :details %>
-    <%= f.text_field :details %>
+    <%= f.label :details %> <br/>
+    <%= f.text_field :details, :class => form_field %>
   </p>
 
   <p>
-    <%= f.label :color %>
-    <%= f.text_field :color %>
+    <%= f.label :color %> <br/>
+    <%= f.color_field :color %>
   </p>
 
-  <p>
-    <%= f.submit %>
+  <p class="<%=button_container%>">
+    <%= f.submit 'Create Category', :class => primary_button %>
   </p>
 <% end %>
+
+<%= button_to 'Back', categories_path, :method => "get", :class => secondary_button %>
+</div>

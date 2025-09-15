@@ -1,19 +1,15 @@
+<div class="<%= flex_col_container %>">
 <%= render 'shared/dashboard' %>
-<table>
-  <thead>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Details</th>
-    <th>Due Date</th>
-  </thead>
-  <tbody>
-      <tr>
-        <td><%= @task.id %></td>
-        <td><%= @task.name %></td>
-        <td><%= @task.details %></td>
-        <td><%= @task.due_date %></td>
-      </tr>
-  </tbody>
-</table>
+<div class="<%= category_container %>">
+  <div class="<%= flex_row_container %>">
+    <div class="flex flex-row gap-[0.25rem]">
+      <pre style="background-color: <%=@task.category.color%>5A;"> </pre>
+      <p class="<%= emphasis %>"><%= @task.name %></p>
+    </div>
+    <p><%= @task.due_date %></p>
+  </div>
+  <p><%= @task.details %></p>
+</div>
 
-<%= button_to 'Back', category_path(@category), :method => "get"%>
+<%= button_to 'Back', category_path(@category), :method => "get", :class => secondary_button %>
+</div>

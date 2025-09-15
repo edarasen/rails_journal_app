@@ -1,32 +1,23 @@
-<% if @categories.any? %>
-  <table>
-    <thead>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Details</th>
-      <th>Due Date</th>
-      <th>Category Name</th>
-    </thead>
-    <tbody>
-      <% @categories.each do |category| %>
-      <% break if category.id == nil%>
-        <% category.tasks.each do |task| %>
-          <% if task.due_date == Date.today %>
-            <tr>
-              <td><%= task.id %></td>
-              <td><%= task.name %></td>
-              <td><%= task.details %></td>
-              <td><%= task.due_date %></td>
-              <td style="color: <%=category.color%>;"><%= category.name %></td>
-              <td><%= button_to 'Show', category_task_path(category, task), :method => "get"%></td>
-              <td><%= button_to 'Edit', edit_category_task_path(category, task), :method => "get"%></td>
-              <td><%= button_to 'Delete', category_task_path(category, task), :method => "delete"%></td>
-            </tr>
-          <% end %>
-        <% end %>
-      <% end %>
-    </tbody>
-  </table>
+<% if @daily_tasks.any? %>
+  <h3 class="<%=sub_header%>">Today's Tasks</h3>
+  <% @daily_tasks.each do |task| %>
+  <% break if task.id == nil%>
+    <div class="<%= category_container %>">
+      <div class="<%= flex_row_container %>">
+        <div class="flex flex-row gap-[0.25rem]">
+          <pre style="background-color: <%=task.category.color%>5A;"> </pre>
+          <p class="<%= emphasis %>"><%= task.name %></p>
+        </div>
+        <p><%= task.due_date %></p>
+      </div>
+      <p><%= task.details %></p>
+      <div class="<%= button_container %>">
+        <%= button_to 'Show', category_task_path(task.category, task), :method => "get", :class=> primary_button %>
+        <%= button_to 'Edit', edit_category_task_path(task.category, task), :method => "get", :class=> secondary_button %>
+        <%= button_to 'Delete', category_task_path(task.category, task), :method => "delete", :class=> delete_button %>
+      </div>
+    </div>
+  <% end %>
 <% else %>
   <h3>No tasks for today! Take a break!</h3>
 <% end %>

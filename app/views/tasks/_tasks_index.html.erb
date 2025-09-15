@@ -1,28 +1,25 @@
-<%= render 'tasks/new', category: category %>
-
 <% if @tasks.any? %>
-  <table>
-    <thead>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Details</th>
-      <th>Due Date</th>
-    </thead>
-    <tbody>
-      <% @tasks.each do |task| %>
-      <% break if task.id == nil%>
-        <tr>
-          <td><%= task.id %></td>
-          <td><%= task.name %></td>
-          <td><%= task.details %></td>
-          <td><%= task.due_date %></td>
-          <td><%= button_to 'Show', category_task_path(category, task), :method => "get"%></td>
-          <td><%= button_to 'Edit', edit_category_task_path(category, task), :method => "get"%></td>
-          <td><%= button_to 'Delete', category_task_path(category, task), :method => "delete"%></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <div class="<%= flex_col_container %>">
+    <% @tasks.each do |task| %>
+    <% break if task.id == nil%>
+      <div class="<%= category_container %>">
+        <div class="<%= flex_row_container %>">
+          <div class="flex flex-row gap-[0.25rem]">
+            <pre style="background-color: <%=category.color%>5A;"> </pre>
+            <p class="<%= emphasis %>"><%= task.name %></p>
+          </div>
+          <p><%= task.due_date %></p>
+        </div>
+        <p><%= task.details %></p>
+        <div class="<%= button_container %>">
+          <%= button_to 'Show', category_task_path(category, task), :method => "get", :class=> primary_button %>
+          <%= button_to 'Edit', edit_category_task_path(category, task), :method => "get", :class=> secondary_button %>
+          <%= button_to 'Delete', category_task_path(category, task), :method => "delete", :class=> delete_button %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% else %>
   <h3>No tasks to display</h3>
 <% end %>
+<%= render 'tasks/new', category: category %>

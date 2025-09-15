@@ -1,24 +1,13 @@
-<%= render 'shared/dashboard' %>
-<table>
-  <thead>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Details</th>
-    <th>Task Count</th>
-    <th>Color</th>
-  </thead>
-  <tbody>
-      <tr>
-        <td><%= @category.id %></td>
-        <td><%= @category.name %></td>
-        <td style="color: <%= @category.color%>;"><%= @category.details %></td>
-        <td><%= @category.tasks.count %></td>
-        <td><%= @category.color %></td>
-      </tr>
-  </tbody>
-</table>
+<div class="<%= flex_col_container %>">
+  <%= render 'shared/dashboard' %>
+  <div class="<%= category_container %>">
+    <p style="background-color: <%=@category.color%>5A;"><%= @category.name %></p>
+    <p><%= @category.details %></p>
+    <p>Task Count : < <%= @category.tasks.count %> ></p>
+  </div>
 
-<h1>Tasks</h1>
-<%= render 'tasks/tasks_index', category: @category %>
+  <h1 class="<%= sub_header %>">Tasks</h1>
+  <%= render 'tasks/tasks_index', category: @category %>
 
-<%= button_to 'Back to Home', categories_path, :method => "get"%>
+  <%= button_to 'Back', categories_path, :method => "get", :class => secondary_button %>
+</div>

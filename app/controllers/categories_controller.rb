@@ -1,9 +1,18 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found 
 
   def index
     @user = current_user
     @categories = @user.categories
+    @daily_tasks = []
+    @categories.each do |category|
+      category.tasks.each do |task|
+        if task.due_date == Date.today
+          @daily_tasks.push(task)
+        end
+      end
+    end
   end
 
   def show
@@ -50,5 +59,9 @@ class CategoriesController < ApplicationController
   private
   def category_params
     params.require(:category).permit(:name, :details, :color)
+  end
+
+  def not_found
+    render plain: "User does not exist", status: :not_found
   end
 end
