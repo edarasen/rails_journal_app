@@ -2,7 +2,7 @@ module ApplicationHelper
   def form_field
     "border border-solid px-[0.25rem] cursor-text"
   end
-  
+
   def flex_col_container
     "flex flex-col gap-[1rem]"
   end
@@ -26,7 +26,7 @@ module ApplicationHelper
   def primary_button
     "px-[0.5rem] py-[0.25rem] cursor-pointer hover:bg-[#9DFBC3] underline"
   end
-  
+ 
   def secondary_button
     "px-[0.5rem] py-[0.25rem] cursor-pointer hover:bg-[#BEF0EF] underline"
   end
@@ -46,5 +46,4 @@ module ApplicationHelper
   def emphasis
     "text-lg italic"
   end
-
 end
