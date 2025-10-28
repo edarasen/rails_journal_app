@@ -64,7 +64,7 @@ group :test do
 end
 
 
-gem "tailwindcss-rails", "~> 4.3"
+gem "tailwindcss-rails", "~> 4.4"
 
 gem "watchman-rails"
 
